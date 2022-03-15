@@ -9,15 +9,26 @@
     <link rel="stylesheet" href="/stylesheets/application.css">
   </head>
 
+
   <body>
-    <div>
-      <%= flash[:notice] %>
-    </div>
-    <div>
-      <a href="/">Home</a>
-      <%#= button_to "Logout", "/sessions/logout", method: :delete %>
+  
+
+ 
+    <p>
+    <a href="/">Home</a>
+    <% if @current_user %>
+        Welcome
+
+      <%= button_to "Logout", "/sessions/logout", method: :delete %>
+    <% else %>  
       <a href="/sessions/new">Login</a>
       <a href="/users/new">Signup</a>
+
+    <% end %>
+    </p>
+
+    <div>
+      <%= flash[:notice] %>
     </div>
 
     <%= yield %>
